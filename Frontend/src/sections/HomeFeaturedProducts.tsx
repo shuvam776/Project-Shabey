@@ -1,4 +1,4 @@
-import React from "react"
+
 import { ThreeDcard } from "@/components/acerternity/cards/ThreeDcard"
 
 const products = [

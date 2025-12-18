@@ -1,4 +1,4 @@
-import React from "react"
+
 import { BackgroundBeams } from "@/components/acerternity/backgrounds/background-beams"
 
 export function HeroSection() {

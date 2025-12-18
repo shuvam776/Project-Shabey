@@ -1,4 +1,4 @@
-import React from "react"
+
 import { Spotlight } from "@/components/acerternity/backgrounds/spotlight"
 import { TextRevealCard } from "@/components/acerternity/texts/text-reveal-card"
 import { Button } from "@/components/ui/button"

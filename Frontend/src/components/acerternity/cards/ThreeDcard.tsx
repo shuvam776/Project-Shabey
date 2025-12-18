@@ -1,4 +1,4 @@
-import React from "react"
+
 import { CardBody, CardContainer, CardItem } from "@/components/acerternity/cards/3d-card"
 
 type ThreeDcardProps = {

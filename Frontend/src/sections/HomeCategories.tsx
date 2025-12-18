@@ -1,4 +1,4 @@
-import React from "react"
+
 import { HoverBorderGradient } from "@/components/acerternity/effects/hover-border-gradient"
 
 const categories = [
