@@ -16,7 +16,7 @@ export default function Navbar() {
           to="/"
           className="text-lg font-semibold tracking-wide text-white"
         >
-        <p>  <img src="" h-full w-full></img>
+        <p>  SHABEY </p>
         </Link>
 
         {/* CENTER: BUY / SELL CTAs */}
