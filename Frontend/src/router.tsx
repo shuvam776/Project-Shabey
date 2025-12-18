@@ -7,7 +7,7 @@ import Home from "@/pages/Home"
 import Explore from "@/pages/Explore"
 import BuyProduct from "@/pages/BuyProduct"
 import Auth from "@/pages/Auth"
-import Signup from "@/pages/SignUP"
+import SignUp from "./pages/Signup"
 import SellerOnboarding from "@/pages/SellerOnboarding"
 
 export const router = createBrowserRouter([
@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
 
       // Auth
       { path: "/auth", element: <Auth /> },
-      { path: "/auth/signup", element: <Signup /> },
+      { path: "/auth/signup", element: <SignUp /> },
 
       // Seller
       { path: "/seller/onboarding", element: <SellerOnboarding /> },
