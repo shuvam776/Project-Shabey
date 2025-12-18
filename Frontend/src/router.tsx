@@ -1,20 +1,29 @@
-import { Routes, Route } from "react-router-dom"
+// src/router.tsx
+import { createBrowserRouter } from "react-router-dom"
+import MainLayout from "@/components/layout/MainLayout"
 
-import AppLayout from "./components/layout/AppLayout"
-import Home from "./pages/Home"
-import Explore from "./pages/Explore"
-import BuyProduct from "./pages/BuyProduct"
+// Pages
+import Home from "@/pages/Home"
+import Explore from "@/pages/Explore"
+import BuyProduct from "@/pages/BuyProduct"
+import Auth from "@/pages/Auth"
+import Signup from "@/pages/SignUP"
+import SellerOnboarding from "@/pages/SellerOnboarding"
 
-function App() {
-  return (
-    <AppLayout>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/product/:id" element={<BuyProduct />} />
-      </Routes>
-    </AppLayout>
-  )
-}
+export const router = createBrowserRouter([
+  {
+    element: <MainLayout />,
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "/explore", element: <Explore /> },
+      { path: "/buy/:productId", element: <BuyProduct /> },
 
-export default App
+      // Auth
+      { path: "/auth", element: <Auth /> },
+      { path: "/auth/signup", element: <Signup /> },
+
+      // Seller
+      { path: "/seller/onboarding", element: <SellerOnboarding /> },
+    ],
+  },
+])

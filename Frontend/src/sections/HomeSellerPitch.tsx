@@ -14,9 +14,6 @@ export default function HomeSellerPitch() {
           interaction-driven discovery — not endless scrolling.
         </p>
 
-        <Button size="lg" className="mt-10">
-          Start Selling
-        </Button>
       </div>
     </section>
   )

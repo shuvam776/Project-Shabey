@@ -1,24 +1,38 @@
 // src/pages/BuyProduct.tsx
 import { useParams } from "react-router-dom"
+import { products } from "@/data/products"
 import { Button } from "@/components/ui/button"
+import { ShoppingCart } from "lucide-react"
 
 export default function BuyProduct() {
   const { productId } = useParams()
 
-  // Later: replace this with AI / API data
-  const product = {
-    name: productId?.toUpperCase(),
-    tagline: "Designed to unlock performance, not promise it.",
-    description:
-      "This product is engineered for creators who value clarity, speed, and control. Every feature exists for a reason.",
-    price: "₹1,999",
+  const product = products.find(
+    (p) => p.id === productId
+  )
+
+  if (!product) {
+    return (
+      <div className="py-32 text-center text-neutral-400">
+        Product not found.
+      </div>
+    )
   }
 
   return (
-    <section className="mx-auto max-w-5xl px-6 py-24">
-      <div className="grid gap-12 md:grid-cols-2">
+    <section className="mx-auto max-w-6xl px-6 py-24">
+      <div className="grid gap-16 md:grid-cols-2">
         
-        {/* Left: Info */}
+        {/* Image */}
+        <div className="aspect-square overflow-hidden border border-white/10">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="h-full w-full object-cover"
+          />
+        </div>
+
+        {/* Info */}
         <div className="space-y-6">
           <p className="text-xs tracking-widest text-neutral-400">
             SHABEY PRODUCT
@@ -33,19 +47,19 @@ export default function BuyProduct() {
           </p>
 
           <p className="text-2xl font-medium">
-            {product.price}
-          </p>
-        </div>
-
-        {/* Right: Action */}
-        <div className="flex flex-col justify-center gap-4 border border-white/10 p-8">
-          <p className="text-sm text-neutral-400">
-            One-time access. Lifetime value.
+            ₹{product.price}
           </p>
 
-          <Button size="lg" className="w-full">
-            Unlock Product
-          </Button>
+          <div className="flex gap-4">
+            <Button className="flex gap-2">
+              <ShoppingCart size={18} />
+              Add to Cart
+            </Button>
+
+            <Button variant="outline">
+              Buy Now
+            </Button>
+          </div>
         </div>
       </div>
     </section>
