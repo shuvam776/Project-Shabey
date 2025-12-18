@@ -21,16 +21,16 @@ export default function HomeHero() {
 
         {/* Headline */}
         <TextRevealCard
-          text="Products aren’t bought. They’re unlocked."
+          text="Products  aren’t  bought.  They’re unlocked."
           className="mx-auto max-w-4xl text-4xl md:text-7xl font-bold text-black leading-tight"
         />
 
-        <p className="mx-auto mt-6 max-w-2xl text-neutral-700 text-base md:text-lg font-bold">
+        <p className="mx-auto mt-6 max-w-2xl flex flex-wrap opacity-0 md:opacity-100 text-neutral-700 text-base md:text-lg font-bold">
           A premium marketplace where discovery feels earned and
           design sets the standard.
         </p>
 
-        <div className="mt-10 flex items-center justify-center gap-4">
+        <div className="mt-10 md:flex md:flex-row flex flex-col items-center justify-center gap-4">
           <Button size="lg" className="px-8 hover:bg-black hover:text-white hover:scale-105">
             Explore Marketplace
           </Button>
