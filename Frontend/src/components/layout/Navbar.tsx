@@ -1,36 +1,45 @@
-// src/components/layout/Navbar.tsx
-import { Link, NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
+import { isAuthenticated, logout } from "@/lib/auth"
+import { ProfileProgressAvatar } from "@/components/ProfileProgressAvatar"
 
 export default function Navbar() {
+  const loggedIn = isAuthenticated()
+
+  // TEMP mock until you fetch user from backend
+  const user = {
+    avatar: "",
+    profileCompletion: 40,
+  }
+
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <Link to="/" className="tracking-widest font-semibold">
-          SHABEY
-        </Link>
+    <nav className="flex items-center justify-between px-6 py-4 border-b border-white/10">
+      <Link to="/" className="text-xl font-semibold">
+        SHABEY
+      </Link>
 
-        <nav className="hidden md:flex gap-8 text-sm text-neutral-300">
-          <NavLink to="/explore" className="hover:text-white">
-            Explore
-          </NavLink>
-          <NavLink to="/seller/onboarding" className="hover:text-white">
-            Sell
-          </NavLink>
-        </nav>
+      <div className="flex items-center gap-6">
+        <Link to="/explore">Explore</Link>
 
-        <Link
-          to="/auth"
-          className="
-            border border-white/20 px-4 py-1.5
-            transition-all
-            hover:scale-105
-            hover:bg-white
-            hover:text-black
-          "
-        >
-          Get Started
-        </Link>
+        {!loggedIn ? (
+          <Link to="/auth">Get Started</Link>
+        ) : (
+          <div className="flex items-center gap-4">
+            <Link to="/profile">
+              <ProfileProgressAvatar
+                avatar={user.avatar}
+                percent={user.profileCompletion}
+              />
+            </Link>
+
+            <button
+              onClick={logout}
+              className="text-sm text-neutral-400 hover:text-white"
+            >
+              Logout
+            </button>
+          </div>
+        )}
       </div>
-    </header>
+    </nav>
   )
 }

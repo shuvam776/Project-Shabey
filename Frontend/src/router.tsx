@@ -1,4 +1,3 @@
-// src/router.tsx
 import { createBrowserRouter } from "react-router-dom"
 import MainLayout from "@/components/layout/MainLayout"
 
@@ -7,8 +6,12 @@ import Home from "@/pages/Home"
 import Explore from "@/pages/Explore"
 import BuyProduct from "@/pages/BuyProduct"
 import Auth from "@/pages/Auth"
-import SignUp from "./pages/Signup"
+import SignUp from "@/pages/Signup"
 import SellerOnboarding from "@/pages/SellerOnboarding"
+import Profile from "@/components/Profile"
+
+// Route guard
+import ProtectedRoute from "@/routes/ProtectectedRoute"
 
 export const router = createBrowserRouter([
   {
@@ -22,7 +25,17 @@ export const router = createBrowserRouter([
       { path: "/auth", element: <Auth /> },
       { path: "/auth/signup", element: <SignUp /> },
 
-      // Seller
+      // Profile (PROTECTED)
+      {
+        path: "/profile",
+        element: (
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        ),
+      },
+
+      // Seller (leave as-is for now)
       { path: "/seller/onboarding", element: <SellerOnboarding /> },
     ],
   },
