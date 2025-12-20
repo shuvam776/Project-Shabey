@@ -5,7 +5,7 @@ import cors from 'cors'
 try{
 app.use(cors({
     
-    origin :'http://localhost:5173',
+    origin : process.env.CORS_ORIGIN,
     credentials :true,
     methods : ["GET","POST","PUT","PATCH","DELETE","OPTIONS"],
     allowedHeaders: ["Content-type","Authorization"],
