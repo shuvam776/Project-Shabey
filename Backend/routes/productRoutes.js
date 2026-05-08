@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { productController } from "../controllers/productController.js";
-import { protect } from "../middlewares/authMiddlewares.js";
-import { upload } from "../middlewares/multerMiddleware.js";
+import { protect } from "../middlewares/authMiddleWares.js";
+import { upload } from "../middlewares/multerMiddleWare.js";
 
 const router = Router();
 

@@ -6,17 +6,11 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// Retry failed images with alternative Unsplash URLs
 const images = [
-  // cat_living_room → alternative living room
   { url: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=600&auto=format&fit=crop", id: "cat_living_room" },
-  // cat_dining → alternative dining
   { url: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=600&auto=format&fit=crop", id: "cat_dining" },
-  // cat_workspace → alternative desk
   { url: "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?q=80&w=600&auto=format&fit=crop", id: "cat_workspace" },
-  // trend_tote → alternative bag
   { url: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=600&auto=format&fit=crop", id: "trend_tote" },
-  // trend_candle → alternative candle
   { url: "https://images.unsplash.com/photo-1581519176099-8f7e4e64e9c2?q=80&w=600&auto=format&fit=crop", id: "trend_candle" },
 ];
 
@@ -31,9 +25,9 @@ async function uploadAll() {
         resource_type: "image",
       });
       results[img.id] = res.secure_url;
-      console.log(`✅ ${res.secure_url}`);
+      console.log(` ${res.secure_url}`);
     } catch (err) {
-      console.error(`❌ Failed ${img.id}: ${err.message}`);
+      console.error(` Failed ${img.id}: ${err.message}`);
     }
   }
   console.log("\n======== RETRY RESULTS ========");
