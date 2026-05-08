@@ -6,11 +6,33 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    usertype: {
+      type: String,
+      enum: ["buyer", "seller"],
+      default: "buyer",
+    },
+    address: {
+      type: String,
+      default: "",
+    },
+    phone: {
+      type: String,
+      default: "",
+    },  
     email: {
       type: String,
       required: true,
       unique: true,
     },
+    avatar: {
+      type: String,
+      default: "",
+    },
+    bio: {
+      type: String,
+      default: "",
+    },
+
     provider: {
       type: String,
       default: "google",

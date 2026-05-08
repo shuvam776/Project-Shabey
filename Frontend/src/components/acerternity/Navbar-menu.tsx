@@ -1,6 +1,3 @@
-"use client"
-
-import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { useState } from "react"
 import { Link } from "react-router-dom"
@@ -13,12 +10,7 @@ export function Menu({
   className?: string
 }) {
   return (
-    <nav
-      className={cn(
-        "relative z-50 flex w-full justify-center",
-        className
-      )}
-    >
+    <nav className={cn("relative z-50 flex w-full justify-center gap-6", className)}>
       {children}
     </nav>
   )
@@ -37,20 +29,16 @@ export function MenuItem({
     <div
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}
-      className="relative"
+      className="relative group"
     >
-      <span className="cursor-pointer px-4 py-2 text-sm text-neutral-300 hover:text-white">
+      <span className="cursor-pointer px-4 py-2 text-sm font-bold text-green-700 hover:text-green-900 transition-colors">
         {item}
       </span>
 
       {active && (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="absolute left-1/2 top-full mt-4 w-48 -translate-x-1/2 rounded-xl border border-white/10 bg-neutral-900 p-4 shadow-xl"
-        >
+        <div className="absolute left-1/2 top-full mt-2 w-48 -translate-x-1/2 rounded-md border border-green-200 bg-white p-3 shadow-lg flex flex-col gap-2">
           {children}
-        </motion.div>
+        </div>
       )}
     </div>
   )
@@ -66,7 +54,7 @@ export function HoveredLink({
   return (
     <Link
       to={to}
-      className="block rounded-md px-3 py-2 text-sm text-neutral-400 hover:bg-white/10 hover:text-white"
+      className="block rounded px-3 py-2 text-sm font-medium text-green-700 hover:bg-green-50 hover:text-green-900 transition-colors"
     >
       {children}
     </Link>

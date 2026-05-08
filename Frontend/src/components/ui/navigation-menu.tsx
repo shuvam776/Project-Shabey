@@ -6,15 +6,13 @@ import { useRef } from "react"
 import { cn } from "@/lib/utils"
 
 /* =========================
-   Menu (wrapper)
+   Menu (wrap   per)
 ========================= */
 
 export function Menu({
   children,
-  setActive,
 }: {
   children: ReactNode
-  setActive: (value: string | null) => void
 }) {
   return (
     <nav className="flex items-center gap-6">
@@ -64,10 +62,10 @@ export function MenuItem({
       {/* Trigger */}
       <span
         className={cn(
-          "cursor-pointer px-3 py-2 text-sm transition select-none",
+          "cursor-pointer px-3 py-2 text-sm transition select-none font-medium",
           isActive
-            ? "text-white"
-            : "text-neutral-400 hover:text-white"
+            ? "text-green-900"
+            : "text-green-600 hover:text-green-900"
         )}
       >
         {item}
@@ -81,7 +79,7 @@ export function MenuItem({
           exit={{ opacity: 0, y: 8 }}
           transition={{ duration: 0.15, ease: "easeOut" }}
           className="absolute left-1/2 top-full mt-3 -translate-x-1/2
-                     rounded-xl border border-white/10 bg-neutral-900
+                     rounded-xl border border-green-200 bg-white
                      p-4 shadow-xl"
           onMouseEnter={openMenu}
           onMouseLeave={closeMenu}
@@ -111,8 +109,8 @@ export function HoveredLink({
       to={to}
       onClick={closeMenu}
       className="block rounded-md px-3 py-2 text-sm
-                 text-neutral-400 transition
-                 hover:bg-white/10 hover:text-white"
+                 text-green-600 font-medium transition
+                 hover:bg-green-50 hover:text-green-900"
     >
       {children}
     </Link>

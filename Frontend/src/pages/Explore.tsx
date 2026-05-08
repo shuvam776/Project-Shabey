@@ -1,97 +1,91 @@
-// src/pages/Explore.tsx
 import { useState } from "react"
-import { Link } from "react-router-dom"
-import { products } from "@/data/products"
-import { Button } from "@/components/ui/button"
-
-const MOBILE_ITEMS_PER_PAGE = 10
+import { Search, Loader2 } from "lucide-react"
+import ProductCard from "@/components/ProductCard"
+import { useProducts } from "@/lib/useProducts";
+const CATEGORIES = ["All", "smartphones", "laptops", "fragrances", "skincare", "groceries", "furniture"]
 
 export default function Explore() {
-  const [page, setPage] = useState(1)
-
-  const totalPages = Math.ceil(products.length / MOBILE_ITEMS_PER_PAGE)
-
-  const mobileProducts = products.slice(
-    (page - 1) * MOBILE_ITEMS_PER_PAGE,
-    page * MOBILE_ITEMS_PER_PAGE
+  const { products, loading, error } = useProducts()
+  const [searchQuery, setSearchQuery] = useState("")
+  const [activeCategory, setActiveCategory] = useState("All")
+  
+  // Filter by search query
+  const filteredProducts = products.filter((p) =>
+    p.title.toLowerCase().includes(searchQuery.toLowerCase())
   )
 
+  // Filter by category on top of search
+  const displayProducts = activeCategory === "All"
+    ? filteredProducts
+    : filteredProducts.filter((p) => p.category === activeCategory)
+
   return (
-    <section className="mx-auto max-w-7xl px-4 py-20">
-      {/* Header */}
-      <div className="mb-12 text-center">
-        <h1 className="text-3xl md:text-4xl font-semibold">
-          Explore SHABEY Products
-        </h1>
-        <p className="mt-4 text-neutral-400">
-          Designed to be unlocked, not purchased.
-        </p>
-      </div>
+    <div className="min-h-screen bg-white pt-24 pb-20 px-6">
+      <section className="mx-auto max-w-7xl">
+        <header className="mb-12">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-slate-100 pb-8">
+            <h1 className="text-4xl font-black text-slate-900 tracking-tighter">Collections</h1>
+            <div className="relative w-full md:w-80">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-300" size={16} />
+              <input
+                type="text"
+                placeholder="Search products..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full h-11 pl-10 pr-4 bg-slate-50 border border-transparent rounded-xl text-sm focus:outline-none focus:border-green-500 focus:bg-white transition-all"
+              />
+            </div>
+          </div>
 
-      {/* DESKTOP GRID — ALL 30 */}
-      <div className="hidden md:grid gap-6 grid-cols-3">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+          {/* Categories */}
+          <div className="mt-8 flex items-center gap-6 overflow-x-auto no-scrollbar">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`text-sm font-bold pb-2 transition-all border-b-2 whitespace-nowrap capitalize ${
+                  activeCategory === cat
+                    ? "border-green-600 text-green-600"
+                    : "border-transparent text-slate-400 hover:text-slate-600"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </header>
 
-      {/* MOBILE GRID — PAGINATED */}
-      <div className="grid gap-6 md:hidden">
-        {mobileProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+        {/* Loading state */}
+        {loading && (
+          <div className="flex items-center justify-center py-32 gap-3 text-slate-400">
+            <Loader2 size={20} className="animate-spin" />
+            <span className="text-sm font-bold">Loading products...</span>
+          </div>
+        )}
 
-      {/* MOBILE PAGINATION */}
-      <div className="mt-10 flex justify-center gap-3 md:hidden">
-        {[1, 2, 3].map((p) => (
-          <button
-            key={p}
-            onClick={() => setPage(p)}
-            className={`h-2 w-2 rounded-full transition ${
-              page === p ? "bg-white" : "bg-white/30"
-            }`}
-          />
-        ))}
-      </div>
-    </section>
-  )
-}
+        {/* Error state */}
+        {error && (
+          <div className="text-center py-32 bg-red-50 rounded-3xl border-2 border-dashed border-red-200">
+            <p className="text-red-400 font-medium">Failed to load products. Try refreshing.</p>
+          </div>
+        )}
 
-function ProductCard({ product }: { product: any }) {
-  return (
-    <div className="group border border-white/10 bg-black p-4 transition hover:border-white/30">
-      <div className="aspect-square overflow-hidden">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-        />
-      </div>
+        {/* Empty state */}
+        {!loading && !error && displayProducts.length === 0 && (
+          <div className="text-center py-32 bg-slate-50 rounded-3xl border-2 border-dashed border-slate-200">
+            <p className="text-slate-400 font-medium">No results found for your search.</p>
+          </div>
+        )}
 
-      <div className="mt-4 space-y-2">
-        <h3 className="text-lg font-medium">
-          {product.name}
-        </h3>
-
-        <p className="text-sm text-neutral-400">
-          ₹{product.price}
-        </p>
-
-        <Link to={`/buy/${product.id}`}>
-          <Button
-            className="
-              mt-2 w-full
-              transition-all duration-300
-              hover:scale-105
-              hover:bg-white
-              hover:text-black
-            "
-          >
-            View Product
-          </Button>
-        </Link>
-      </div>
+        {/* Products Grid */}
+        {!loading && !error && displayProducts.length > 0 && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+            {displayProducts.map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+          </div>
+        )}
+      </section>
     </div>
   )
-}
+  }

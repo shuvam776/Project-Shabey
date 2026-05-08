@@ -1,9 +1,57 @@
 @import "tailwindcss";
 
 @layer base {
-  html,
+  :root {
+    --primary: #16a34a; /* Shopify-esque Green but slightly more vibrant */
+    --primary-foreground: #ffffff;
+    --secondary: #f0fdf4;
+    --secondary-foreground: #16a34a;
+    --accent: #22c55e;
+    --background: #ffffff;
+    --foreground: #0f172a;
+    --border: #e2e8f0;
+    --radius: 8px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    background-color: black;
-    color: white;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 }
+
+@layer utilities {
+  .shopify-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: all 0.2s ease;
+  }
+  
+  .shopify-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.05);
+  }
+
+  .btn-primary {
+    background: var(--primary);
+    color: var(--primary-foreground);
+    padding: 12px 24px;
+    border-radius: var(--radius);
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+}
+
+
+

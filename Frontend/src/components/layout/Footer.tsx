@@ -1,32 +1,36 @@
-// src/components/layout/Footer.tsx
 import { Link } from "react-router-dom"
+import { useAuth } from "@/context/authContext"
+import { Github } from "lucide-react"
 
 export default function Footer() {
+  const { user } = useAuth();
+  const isSeller = user?.usertype === "seller";
+
   return (
-    <footer className="border-t border-white/10 bg-black">
-      <div className="mx-auto max-w-7xl px-6 py-16 text-center">
-        <h3 className="text-xl font-medium">
-          Ready to sell on SHABEY?
-        </h3>
+    <footer className="border-t border-slate-100 bg-white text-slate-400">
+      <div className="mx-auto max-w-7xl px-6 py-12">
+        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-slate-50 gap-6">
 
-        <Link
-          to="/seller/onboarding"
-          className="
-            inline-block mt-6 px-8 py-3
-            border border-white/20
-            transition-all duration-300
-            hover:scale-105
-            hover:bg-white
-            hover:text-black
-          "
-        >
-          Sell on SHABEY
-        </Link>
-
-        <p className="mt-8 text-xs text-neutral-500">
-          © {new Date().getFullYear()} SHABEY
-        </p>
+          <p className="text-[10px] font-black uppercase tracking-[0.2em]">
+            © {new Date().getFullYear()} Shabey Marketplace. All rights reserved.
+          </p>
+          <div className="flex items-center gap-8">
+             <a 
+               href="https://github.com/shuvam776/Project-Shabey" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest hover:text-green-600 transition-colors"
+             >
+               <Github size={14} />
+               Github
+             </a>
+             <Link to="/" className="text-[10px] font-black uppercase tracking-widest hover:text-green-600">Privacy</Link>
+             <Link to="/" className="text-[10px] font-black uppercase tracking-widest hover:text-green-600">Terms</Link>
+             <Link to="/" className="text-[10px] font-black uppercase tracking-widest hover:text-green-600">Contact</Link>
+          </div>
+        </div>
       </div>
     </footer>
   )
 }
+

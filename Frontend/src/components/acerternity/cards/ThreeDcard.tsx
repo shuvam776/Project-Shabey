@@ -19,9 +19,9 @@ export default function ThreeDCard({
           relative group/card
           h-full w-full
           rounded-xl
-          border border-white/[0.15]
-          bg-black
-          p-4
+          border border-green-200
+          bg-white
+          p-4 shadow-sm hover:shadow-md transition-shadow
         "
       >
         {/* Image — primary visual */}
@@ -29,14 +29,14 @@ export default function ThreeDCard({
           <img
             src={image}
             alt={title}
-            className="h-48 w-full rounded-lg object-cover"
+            className="h-48 w-full rounded-lg object-cover bg-green-50"
           />
         </CardItem>
 
         {/* Title */}
         <CardItem
           translateZ={40}
-          className="mt-4 text-lg font-semibold text-white"
+          className="mt-4 text-lg font-bold text-green-900"
         >
           {title}
         </CardItem>
@@ -45,7 +45,7 @@ export default function ThreeDCard({
         <CardItem
           as="p"
           translateZ={50}
-          className="mt-1 text-sm text-neutral-400"
+          className="mt-1 text-sm font-medium text-green-700"
         >
           {description}
         </CardItem>

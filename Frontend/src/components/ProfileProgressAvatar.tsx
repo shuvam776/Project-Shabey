@@ -27,7 +27,7 @@ export function ProfileProgressAvatar({
           cx="20"
           cy="20"
           r="18"
-          stroke="white"
+          stroke="black"
           strokeWidth="2"
           fill="none"
           strokeDasharray={circumference}

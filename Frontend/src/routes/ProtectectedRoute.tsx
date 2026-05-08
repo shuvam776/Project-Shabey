@@ -1,14 +1,25 @@
+import React from "react"
 import { Navigate } from "react-router-dom"
-import { isAuthenticated } from "@/lib/auth"
+import { useAuth } from "../context/authContext"
 
 export default function ProtectedRoute({
   children,
 }: {
-  children: JSX.Element
+  children: React.ReactNode
 }) {
-  if (!isAuthenticated()) {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <div className="text-xl text-green-700">Loading...</div>
+      </div>
+    );
+  }
+
+  if (!user) {
     return <Navigate to="/auth" replace />
   }
 
-  return children
+  return <>{children}</>
 }
