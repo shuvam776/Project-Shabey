@@ -14,10 +14,11 @@ export function useProducts(limit: number = 20, skip: number = 0) {
         setLoading(true);
         const data = await fetchProducts(limit, skip);
         if (mounted) {
+          const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME || "dpju1wia5";
           const processedProducts = data.products.map(p => {
             // If it's one of the first 100 products, use the direct upload links we just created
             if (p.id <= 100) {
-              const baseUrl = "https://res.cloudinary.com/dpju1wia5/image/upload/f_auto,q_auto/shabey/products/";
+              const baseUrl = `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,q_auto/shabey/products/`;
               return {
                 ...p,
                 thumbnail: `${baseUrl}p${p.id}_thumb`,
@@ -26,7 +27,7 @@ export function useProducts(limit: number = 20, skip: number = 0) {
             }
             
             // Otherwise, keep using the fetch API as fallback
-            const cloudinaryFetchPrefix = "https://res.cloudinary.com/dpju1wia5/image/fetch/f_auto,q_auto/";
+            const cloudinaryFetchPrefix = `https://res.cloudinary.com/${cloudName}/image/fetch/f_auto,q_auto/`;
             return {
               ...p,
               thumbnail: p.thumbnail ? `${cloudinaryFetchPrefix}${p.thumbnail}` : undefined,
