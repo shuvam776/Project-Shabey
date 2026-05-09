@@ -11,10 +11,10 @@ export default function HomeFeaturedProducts() {
       {/* Header */}
       <div className="mb-12 text-center">
         <h2 className="text-3xl font-bold text-green-900">
-          Featured Unlocks
+          Our top picks for you
         </h2>
         <p className="mt-3 text-green-700">
-          Handpicked products worth your attention.
+          Stuff we really think you'll like.
         </p>
       </div>
 

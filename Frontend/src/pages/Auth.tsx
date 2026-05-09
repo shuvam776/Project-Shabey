@@ -35,7 +35,7 @@ export default function Auth() {
           onClick={logout} 
           className="px-10 h-14 bg-red-500 text-white font-black rounded-xl hover:bg-red-600 transition-all active:scale-95 shadow-lg shadow-red-100"
         >
-          Logout from session
+          Sign out
         </button>
       </div>
     );
@@ -45,7 +45,7 @@ export default function Auth() {
     <div className="flex flex-col items-center justify-center min-h-screen px-6 bg-slate-50">
       <div className="w-full max-w-md p-12 bg-white border border-slate-200 rounded-[2.5rem] shadow-xl shadow-slate-100 text-center">
         <h1 className="text-4xl font-black text-slate-900 tracking-tighter mb-4">SHABEY</h1>
-        <p className="text-slate-500 font-medium mb-10 leading-relaxed">Sign in to your premium <br /> marketplace account.</p>
+        <p className="text-slate-500 font-medium mb-10 leading-relaxed">Welcome to Shabey. <br /> Let's get you signed in.</p>
 
         <button
           onClick={handleGoogleLogin}
@@ -56,7 +56,7 @@ export default function Auth() {
         </button>
 
         <p className="mt-10 text-[10px] text-slate-300 font-bold uppercase tracking-widest leading-relaxed">
-          By signing in, you agree to our <br /> Terms of Service & Privacy Policy.
+          By joining, you agree to our terms and privacy policy. <br /> No spam, we promise lol maybe .
         </p>
       </div>
     </div>

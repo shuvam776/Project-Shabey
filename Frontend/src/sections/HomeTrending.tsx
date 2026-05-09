@@ -72,18 +72,18 @@ export default function HomeTrending() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <TrendingUp size={14} className="text-green-600" />
-              <span className="text-xs font-black text-green-600 uppercase tracking-[0.3em]">Trending Now</span>
+              <span className="text-xs font-black text-green-600 uppercase tracking-[0.3em]">Hot right now</span>
             </div>
             <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-none">
               What everyone's <br />
-              <span className="text-slate-300">buying this week</span>
+              <span className="text-slate-300">obsessing over lately</span>
             </h2>
           </div>
           <button
             onClick={() => navigate("/explore")}
             className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-green-600 transition-colors"
           >
-            Browse all <ArrowRight size={14} />
+            See more <ArrowRight size={14} />
           </button>
         </div>
 

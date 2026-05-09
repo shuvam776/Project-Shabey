@@ -12,12 +12,12 @@ export default function HomeHero() {
           {/* Left Column: Text Content */}
           <div className="max-w-xl">
             <h1 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter leading-[0.9] mb-8">
-              Premium collections <br /> 
-              <span className="text-green-600">for the modern lifestyle</span>
+              Find things you'll <br /> 
+              <span className="text-green-600">actually love.</span>
             </h1>
             
             <p className="text-slate-500 text-lg md:text-xl font-medium leading-relaxed mb-12">
-              Discover high-quality essentials designed to elevate your everyday experience. Verified sellers, quality products.
+              We've brought together the best independent creators and brands in one place. No endless scrolling, just great finds.
             </p>
             
             <button 
