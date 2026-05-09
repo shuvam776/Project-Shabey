@@ -40,8 +40,11 @@ export const googleAuth = async (req, res) => {
       user,
     });
   } catch (error) {
-    console.error(error);
-    res.status(401).json({ message: "Invalid Google token" });
+    console.error("Firebase Token Verification Error:", error);
+    res.status(401).json({ 
+      message: "Invalid Google token", 
+      errorDetails: error.message 
+    });
   }
 };
 
