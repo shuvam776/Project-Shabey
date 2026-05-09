@@ -21,7 +21,11 @@ export const createOrder = async (req, res) => {
         res.status(200).json(order);
         console.log(order);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        console.error("Razorpay Create Order Error:", error);
+        res.status(500).json({ 
+            message: "Razorpay error", 
+            details: error.message || error.error || error 
+        });
     }
 };
 

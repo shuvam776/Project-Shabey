@@ -9,7 +9,6 @@ export default function HomeHero() {
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
-          {/* Left Column: Text Content */}
           <div className="max-w-xl">
             <h1 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter leading-[0.9] mb-8">
               Find things you'll <br /> 
@@ -29,7 +28,6 @@ export default function HomeHero() {
             </button>
           </div>
 
-          {/* Right Column: Image Mosaic — 3-column staggered */}
           <div className="relative">
             <div className="grid grid-cols-3 gap-3 md:gap-4">
 
