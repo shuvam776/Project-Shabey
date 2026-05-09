@@ -25,7 +25,7 @@ export function useProducts(limit: number = 20, skip: number = 0) {
                 image: `${baseUrl}p${p.id}_main`
               };
             }
-            
+
             // Otherwise, keep using the fetch API as fallback
             const cloudinaryFetchPrefix = `https://res.cloudinary.com/${cloudName}/image/fetch/f_auto,q_auto/`;
             return {

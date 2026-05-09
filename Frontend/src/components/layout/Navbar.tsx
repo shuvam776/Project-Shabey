@@ -46,7 +46,7 @@ export default function Navbar() {
             </div>
           ) : (
             <Link to="/auth" className="text-[10px] font-black uppercase tracking-widest bg-slate-900 text-white px-5 py-2.5 rounded-lg hover:bg-black transition-all">
-              Join
+              Login
             </Link>
           )}
         </div>
