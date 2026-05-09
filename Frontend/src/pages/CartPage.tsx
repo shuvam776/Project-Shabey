@@ -42,7 +42,7 @@ export default function CartPage() {
                     <h3 className="text-base font-bold text-slate-800">{item.title}</h3>
                     <p className="text-sm font-bold text-green-600 mt-1">₹{item.price}</p>
                   </div>
-                  <p className="text-lg font-black text-slate-900 tracking-tighter">₹{item.price * item.quantity}</p>
+                  <p className="text-lg font-black text-slate-900 tracking-tighter">₹{Math.ceil(item.price * item.quantity)}</p>
                 </div>
 
                 <div className="flex items-center justify-between">

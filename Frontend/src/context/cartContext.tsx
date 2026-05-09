@@ -60,7 +60,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     localStorage.removeItem("cart");
   };
  
-  const cartTotal = cartItems.reduce((acc, item) => acc + item.price * (item.quantity || 1), 0);
+  const cartTotal = Math.ceil(cartItems.reduce((acc, item) => acc + item.price * (item.quantity || 1), 0));
   const cartCount = cartItems.reduce((acc, item) => acc + (item.quantity || 1), 0);
 
   return (

@@ -12,7 +12,7 @@ export const createOrder = async (req, res) => {
             return res.status(500).json({ message: "Razorpay keys are not configured" });
         }
         const options = {
-            amount: amount * 100,
+            amount: Math.ceil(amount * 100),
             currency: "INR",
             receipt: "receipt_" + Math.random().toString(36).substring(7),
         };

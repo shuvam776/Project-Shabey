@@ -26,7 +26,7 @@ export default function PaymentPage() {
                                         <span className="text-slate-600 font-medium">
                                             {item.name} <span className="text-slate-300 ml-2 font-bold">× {item.quantity}</span>
                                         </span>
-                                        <span className="text-slate-900 font-bold">₹{item.price * item.quantity}</span>
+                                        <span className="text-slate-900 font-bold">₹{Math.ceil(item.price * item.quantity)}</span>
                                     </div>
                                 ))}
                             </div>
