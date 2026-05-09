@@ -24,7 +24,7 @@ export default function Explore() {
       <section className="mx-auto max-w-7xl">
         <header className="mb-12">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-slate-100 pb-8">
-            <h1 className="text-4xl font-black text-slate-900 tracking-tighter">Collections</h1>
+            <h1 className="text-4xl font-black text-slate-900 tracking-tighter">Products</h1>
             <div className="relative w-full md:w-80">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-300" size={16} />
               <input
