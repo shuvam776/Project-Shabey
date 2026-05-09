@@ -17,7 +17,7 @@ export default function HomeHero() {
             </h1>
             
             <p className="text-slate-500 text-lg md:text-xl font-medium leading-relaxed mb-12">
-              We've brought together the best independent creators and brands in one place. No endless scrolling, just great finds.
+            Discover the best independent creators and brands in one place.
             </p>
             
             <button 
